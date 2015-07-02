@@ -223,11 +223,7 @@ impl<'a> Workbook<'a> {
 	}
 
 	pub fn new_format(&mut self, format: &str) -> u32 {
-		let f = self.format.new_format(format);
-
-		assert!(f != 0);
-
-		f
+		self.format.new_format(format)
 	}
 
 	pub fn new_worksheet(&mut self, title: &str, headerRows: u32) -> Worksheet<'a> {
