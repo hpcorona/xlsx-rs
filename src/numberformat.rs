@@ -38,6 +38,7 @@ impl<'a> NumberFormat<'a> {
 	}
 
 	pub fn new_format(&mut self, format: &str) -> u32 {
+		let newposition = (self.data.len() as u32) + 1;
 		let current = self.nextFormat;
 		self.writer.begin_elem("numFmt");
 			self.writer.attr_esc("formatCode", format);
@@ -48,7 +49,7 @@ impl<'a> NumberFormat<'a> {
 
 		self.nextFormat += 1;
 
-		self.data.len() as u32
+		newposition
 	}
 
 	pub fn flush(&mut self) {
