@@ -8,7 +8,8 @@ use std::collections::BTreeMap;
 
 pub struct SharedStrings<'a> {
 	data: BTreeMap<&'a str, u32>,
-	writer: Xml<'a>
+	writer: Xml<'a>,
+	current: u32
 }
 
 impl<'a> SharedStrings<'a> {
@@ -25,7 +26,8 @@ impl<'a> SharedStrings<'a> {
 
 			SharedStrings {
 				data: BTreeMap::new(),
-				writer: xml
+				writer: xml,
+				current: 0
 			}
 		} else {
 			panic!("cannot create shared strings")
@@ -40,12 +42,24 @@ impl<'a> SharedStrings<'a> {
 			}
 		}
 
-		let current = self.data.len() as u32;
+		let current = self.current;
+		self.current += 1;
 		self.data.insert(value, current);
 
 		self.writer.begin_elem("si");
 		self.writer.elem_text("t", value);
 		self.writer.end_elem();
+
+		current
+	}
+
+	pub fn new_value(&mut self, value: &'a str) -> u32 {
+		self.writer.begin_elem("si");
+		self.writer.elem_text("t", value);
+		self.writer.end_elem();
+
+		let current = self.current;
+		self.current += 1;
 
 		current
 	}

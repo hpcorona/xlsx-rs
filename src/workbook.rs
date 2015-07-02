@@ -22,11 +22,12 @@ pub struct Workbook<'a> {
 	worksheets: Xml<'a>,
 	sheetCount: u32,
 	content: Xml<'a>,
-	workbook: Xml<'a>
+	workbook: Xml<'a>,
+	compact: bool
 }
 
 impl<'a> Workbook<'a> {
-	pub fn new(directory: &str, author: &'a str) -> Workbook<'a> {
+	pub fn new(directory: &str, author: &'a str, compact: bool) -> Workbook<'a> {
 		let path = PathBuf::from(directory);
 
 		{
@@ -146,7 +147,8 @@ impl<'a> Workbook<'a> {
 						shared: shared,
 						sheetCount: 0,
 						content: content,
-						workbook: workbook
+						workbook: workbook,
+						compact: compact
 					}
 				} else {
 					panic!("cannot create workbook");
@@ -213,7 +215,11 @@ impl<'a> Workbook<'a> {
 	}
 
 	pub fn value(&mut self, value: &'a str) -> u32 {
-		self.shared.index(value)
+		if self.compact {
+			self.shared.index(value)
+		} else {
+			self.shared.new_value(value)
+		}
 	}
 
 	pub fn new_format(&mut self, format: &str) -> u32 {

@@ -5,7 +5,7 @@ use xlsx::workbook::Workbook;
 #[test]
 fn test() {
 	{
-		let mut w = Workbook::new("tmp/doc1", "Rust");
+		let mut w = Workbook::new("tmp/doc1", "Rust", false);
 		w.initialize();
 
 		let number = w.new_format("#,###,###,##0.00");
@@ -22,6 +22,36 @@ fn test() {
 		s.cell_txt(w.value("Title 4"));
 		s.row();
 
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
+		s.cell_num("50.00", number);
+		s.cell_num("1300.00", number);
+		s.cell_txt(w.value("20"));
+		s.cell_fmt(w.value("23/12/2015"), date);
+		s.row();
 		s.cell_num("50.00", number);
 		s.cell_num("1300.00", number);
 		s.cell_txt(w.value("20"));
