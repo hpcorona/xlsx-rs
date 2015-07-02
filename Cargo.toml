@@ -13,4 +13,4 @@ name = "xlsx"
 
 [dependencies]
 xml_writer = "0.1.2"
-zip = { version = "0.1.8", git = "https://github.com/hpcorona/zip-rs.git" }
+zip = { version = "0.1.9", git = "https://github.com/hpcorona/zip-rs.git" }
