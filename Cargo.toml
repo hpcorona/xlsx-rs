@@ -2,6 +2,11 @@
 name = "xlsx"
 version = "0.1.0"
 authors = ["Hilario Perez Corona <hpcorona@gmail.com>"]
+description = "writes xlsx files"
+license = "MIT"
+repository = "https://github.com/hpcorona/xlsx-rs.git"
+homepage = "https://github.com/hpcorona/xlsx-rs"
+documentation = "https://github.com/hpcorona/xlsx-rs"
 
 [lib]
 name = "xlsx"
