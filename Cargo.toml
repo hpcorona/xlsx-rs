@@ -1,0 +1,11 @@
+[package]
+name = "xlsx"
+version = "0.1.0"
+authors = ["Hilario Perez Corona <hpcorona@gmail.com>"]
+
+[lib]
+name = "xlsx"
+
+[dependencies]
+xml_writer = "0.1.2"
+zip = "0.1.8"
