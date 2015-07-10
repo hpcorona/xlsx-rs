@@ -312,10 +312,7 @@ impl<'a> Workbook<'a> {
 		}
 	}
 
-}
-
-impl<'a> Drop for Workbook<'a> {
-	fn drop(&mut self) {
+	fn clean(&mut self) {
 		let mut helper = self.path.clone();
 
 		helper.push("_rels");
@@ -380,4 +377,11 @@ impl<'a> Drop for Workbook<'a> {
 		helper.pop();
 		fs::remove_dir(&helper);
 	}
+}
+
+impl<'a> Drop for Workbook<'a> {
+	fn drop(&mut self) {
+		self.clean();
+	}
+
 }
