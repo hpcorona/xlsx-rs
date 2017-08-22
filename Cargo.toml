@@ -12,5 +12,5 @@ documentation = "https://github.com/hpcorona/xlsx-rs"
 name = "xlsx"
 
 [dependencies]
-xml_writer = { version = "0.1.2", git = "https://github.com/hpcorona/xml_writer.git" }
+xml_writer = "0.3"
 zip = { version = "0.1.9", git = "https://github.com/hpcorona/zip-rs.git" }
