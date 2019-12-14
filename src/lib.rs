@@ -1,3 +1,4 @@
+#![allow(unused_must_use)]
 extern crate xml_writer;
 
 mod xml;

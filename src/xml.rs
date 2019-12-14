@@ -3,9 +3,10 @@ use std::fs::File;
 use std::io::BufWriter;
 use std::path::PathBuf;
 
+pub use xml_writer::XmlWriter;
+
 pub type Xml<'a> = XmlWriter<'a, BufWriter<File>>;
 
-pub use xml_writer::XmlWriter;
 
 pub fn xml_writer_for_file<'a>(path: &PathBuf) -> Result<Xml<'a>, String> {
     match File::create(path) {

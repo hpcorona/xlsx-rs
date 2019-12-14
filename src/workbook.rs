@@ -1,5 +1,3 @@
-extern crate zip;
-
 use numberformat::*;
 use sharedstrings::*;
 use worksheet::*;
@@ -259,7 +257,7 @@ impl<'a> Workbook<'a> {
         self.format.new_format(format)
     }
 
-    pub fn new_worksheet(&mut self, title: &str, headerRows: u32) -> Worksheet<'a> {
+    pub fn new_worksheet(&mut self, title: &str, header_rows: u32) -> Worksheet<'a> {
         self.sheet_count += 1;
         let idx = self.sheet_count;
 
@@ -288,7 +286,7 @@ impl<'a> Workbook<'a> {
             .attr_esc("PartName", &format!("/xl/worksheets/sheet{}.xml", idx));
         self.content.end_elem();
 
-        Worksheet::new(&self.path, idx, headerRows)
+        Worksheet::new(&self.path, idx, header_rows)
     }
 
     pub fn flush(&mut self) {
