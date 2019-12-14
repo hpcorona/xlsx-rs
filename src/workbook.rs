@@ -340,7 +340,7 @@ impl<'a> Workbook<'a> {
 
     fn zip_file(&mut self, file: &str, zip: &mut zip::ZipWriter<File>) {
         {
-            let mut options: zip::write::FileOptions = zip::write::FileOptions::default();
+            let options: zip::write::FileOptions = zip::write::FileOptions::default();
             options.compression_method(zip::CompressionMethod::Stored);
             zip.start_file(file, options);
         }
